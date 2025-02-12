@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+<meta charset="ISO-8859-1">
+<title>Programs</title>	
+<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+ 	<link rel="stylesheet" type="text/css" href="/styles.css"/>
+
+</head>	
+<body>
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-8">
+				<h1 class="text-center my-4">Προσθήκη Νέου Προγράμματος</h1>
+				<form th:action="@{/process_add_program}" method="post" th:object="${programs}">
+					<div class="form-group">
+						<label for="name">Τίτλος προγράμματος:</label>
+						<input type="text" id="name" name="name" class="form-control" required>
+					</div>
+					<div class="form-group">
+						<label for="degreeScore">Ελάχιστος βαθμός πτυχίου (1-9):</label>
+						<input type="number" id="degreeScore" name="degreeScore" class="form-control" min="1" max="9" required>
+					</div>
+					<div class="form-group">
+						<label for="requiredIncome">Απαιτούμενο μηνιαίο εισόδημα:</label>
+						<input type="number" id="requiredIncome" name="requiredIncome" class="form-control" step="0.01" required>
+					</div>
+					<div class="form-group">
+						<label for="city">Πόλη:</label>
+						<input type="text" id="city" name="city" class="form-control" required>
+					</div>
+					<div class="form-check mb-3">
+						<input type="checkbox" id="remote" name="remote" class="form-check-input">
+						<label class="form-check-label" for="remote">Εξ'αποστάσεως</label>
+					</div>
+					<div class="form-group">
+						<label for="description">Περιγραφή:</label>
+						<textarea id="description" name="description" class="form-control" rows="4"></textarea>
+					</div>
+					<div class="text-center">
+						<button type="submit" class="btn btn-primary">Προσθήκη</button>
+					</div>
+					<div class="mt-4">
+            
+            <a th:href="@{/admin}" class="btn btn-primary">Επιστροφή στην Αρχική</a>
+        </div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script src="/webjars/jquery/jquery.min.js"></script>
+	<script src="/webjars/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

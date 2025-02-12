@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Apply for Program</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+     	<link rel="stylesheet" type="text/css" href="/styles.css"/>
+
+</head>
+<body>
+<div class="container">
+    <div class="text-center">
+        <h2>Αίτηση για <span th:text="${program.name}"></span></h2>
+        <form th:action="@{/process_application}" method="post">
+            <input type="hidden" name="programId" th:value="${program.id}" />
+            <div class="form-group">
+                <label for="degreeScore">Βαθμός Πτυχίου (1-9):</label>
+                <input type="number" id="degreeScore" name="degreeScore" class="form-control" min="1" max="9" required />
+            </div>
+            <div class="form-group">
+                <label for="income">Μηνιαίο Εισόδημα:</label>
+                <input type="number" id="income" name="income" class="form-control" step="0.01" required />
+            </div>
+            <div class="form-group">
+                <label for="city">Πόλη:</label>
+                <input type="text" id="city" name="city" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <label for="remote">Θέλεις να γίνει εξ΄αποστάσεως; :</label>
+                <select id="remote" name="remote" class="form-control" required>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Στείλε την αίτηση</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

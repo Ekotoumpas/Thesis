@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>My Applications</title>    
+<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+ 	<link rel="stylesheet" type="text/css" href="/styles.css"/>
+
+</head>    
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center">Οι Αιτήσεις μου</h1>
+        
+        <div th:if="${listApplications != null}">
+            <table class="table table-striped table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                       
+                        <th>Πρόγραμμα</th>
+                        <th>Βαθμός Πτυχίου</th>
+                        <th>Εισόδημα</th>
+                        <th>Πόλη</th>
+                        <th>Απομακρυσμένη</th>
+                        <th>Κατάσταση</th>
+                        <th>Ημερομηνία</th>
+                        <th>Ενέργειες</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="applications : ${listApplications}">
+                     
+                        <td th:text="${applications.program.name}"></td>
+                        <td th:text="${applications.degreeScore}"></td>
+                        <td th:text="${applications.income}"></td>
+                        <td th:text="${applications.city}"></td>
+                        <td th:text="${applications.remote ? 'Ναι' : 'Όχι'}"></td>
+                        <td th:text="${applications.accepted ? 'Εγκρίθηκε' : 'Απορρίφθηκε'}"></td>
+                        <td th:text="${applications.applicationDateTime}"></td>
+                        <td>
+                            <!-- Σύνδεσμος για διαγραφή της αίτησης -->
+                            <a th:href="@{/delete_application/{id}(id=${applications.id})}" class="btn btn-danger btn-sm" onclick="return confirm('Είστε σίγουροι ότι θέλετε να διαγράψετε αυτή την αίτηση;');">Διαγραφή</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div th:if="${error != null}">
+            <div class="alert alert-danger" th:text="${error}"></div>
+        </div>
+        
+        <div class="mt-4">
+            
+            <a th:href="@{/users}" class="btn btn-secondary">Επιστροφή στην Αρχική</a>
+        </div>
+    </div>
+    <script src="/webjars/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

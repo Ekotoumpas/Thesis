@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>HOME</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+ 	<link rel="stylesheet" type="text/css" href="/styles.css"/>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Μεταπτυχιακά προγράμματα</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/register}">Εγγραφή</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/login}">Σύνδεση</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/admin}">Διαχειριστής</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container text-center mt-4">
+        <h1>Καλώς Ήρθατε</h1>
+        <div class="quote-box">
+            <p>"Η γνώση είναι δύναμη. Ανακάλυψε το μέλλον σου με ένα μεταπτυχιακό πρόγραμμα."</p>
+        </div>
+        <div class="quote-box">
+            <p>"Η εκπαίδευση είναι το κλειδί της επιτυχίας. Επίλεξε το ιδανικό πρόγραμμα για εσένα."</p>
+        </div>
+        <div class="quote-box">
+            <p>"Επένδυσε στο μέλλον σου. Ξεκίνα την πορεία σου με το σωστό μεταπτυχιακό."</p>
+        </div>
+    </div>
+
+    <script src="/webjars/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

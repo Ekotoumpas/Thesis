@@ -1,0 +1,61 @@
+ body {
+    background-color: #34495e;
+    color: white;
+}
+
+
+       /* Στυλ για quote box */
+.quote-box {
+    background-color: rgba(0, 0, 0, 0.8); /* Σκούρο φόντο για αντίθεση */
+    padding: 20px;
+    border: 2px solid #ffffff; /* Λευκό περίγραμμα για να ξεχωρίζει */
+    border-radius: 8px; /* Στρογγυλεμένες γωνίες */
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.6); /* Ελαφρώς πιο έντονη σκιά */
+    text-align: center; /* Κέντρο το κείμενο */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Εφέ μετάβασης */
+}
+
+/* Εφέ όταν ο χρήστης περνάει το ποντίκι πάνω από το quote box */
+.quote-box:hover {
+    background-color: rgba(0, 0, 0, 0.9); /* Σκούρο φόντο κατά την αιώρηση */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.8); /* Εντονότερη σκιά κατά την αιώρηση */
+    transform: scale(1.05); /* Ελαφριά αύξηση του μεγέθους κατά την αιώρηση */
+}
+
+/* Στυλ για το κείμενο μέσα στο quote box */
+.quote-box p {
+    color: #ffffff; /* Λευκό χρώμα κειμένου */
+    font-size: 1.2em; /* Μεγαλύτερο μέγεθος κειμένου */
+    font-style: italic; /* Πλάγιο κείμενο */
+    margin: 0; /* Αφαίρεση του περιθωρίου γύρω από το κείμενο */
+}
+
+/* Στυλ για τον συγγραφέα ή την υπογραφή */
+.quote-box .author {
+    color: #ffffff; /* Λευκό χρώμα κειμένου */
+    font-weight: bold; /* Χοντρό κείμενο */
+    margin-top: 10px; /* Απόσταση από το κείμενο */
+    font-size: 1em; /* Κανονικό μέγεθος κειμένου */
+}
+
+        
+        /* Αλλαγή χρώματος κειμένου σε όλους τους πίνακες */
+table {
+    color: white; /* Χρώμα κειμένου */
+    background-color: #2c3e50; /* Εναλλακτικό χρώμα φόντου για το τραπέζι, αν θέλεις */
+}
+
+th, td {
+    color: white; /* Χρώμα κειμένου για κεφαλίδες και κελιά */
+}
+
+/* Αν θέλεις να κάνεις πιο ελκυστικό το χρώμα των κεφαλίδων */
+thead th {
+    background-color: #34495e; /* Χρώμα φόντου κεφαλίδων */
+}
+
+
+.navbar-nav {
+    margin-left: auto; /* Εάν χρειάζεται */
+}

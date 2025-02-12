@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Programs with Users</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+     	<link rel="stylesheet" type="text/css" href="/styles.css"/>
+
+</head>
+<body>
+    <div class="container">
+        <h1>Programs and Users</h1>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Program Name</th>
+                    <th>Degree Score</th>
+                    <th>Required Income</th>
+                    <th>City</th>
+                    <th>Remote</th>
+                    <th>Description</th>
+                    <th>Users</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="program : ${programs}">
+                    <td th:text="${program.name}">Program Name</td>
+                    <td th:text="${program.degreeScore}">Degree Score</td>
+                    <td th:text="${program.requiredIncome}">Required Income</td>
+                    <td th:text="${program.city}">City</td>
+                    <td th:text="${program.remote} ? 'Yes' : 'No'">Remote</td>
+                    <td th:text="${program.description}">Description</td>
+                    <td>
+                        <ul>
+                            <li th:each="user : ${program.users}" th:text="${user.firstname} + ' ' + ${user.lastname}">User</li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+         <form th:action="@{/logout}" method="post">
+                <input type="submit" class="btn btn-primary" value="Sign Out" />
+            </form>
+
+    </div>
+    
+</body>
+</html>

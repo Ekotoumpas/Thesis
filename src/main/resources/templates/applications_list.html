@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Applications List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+     	<link rel="stylesheet" type="text/css" href="/styles.css"/>
+
+</head>
+<body class="container mt-5">
+<h2>Οι αιτήσεις</h2>
+<table class="table table-striped table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>N</th>
+            <th>Όνομα χρήστη</th>
+            <th>Όνομα προγράμματος</th>
+            <th>Βαθμός πτυχίου</th>
+            <th>Εισόδημα</th>
+            <th>Πόλη</th>
+            <th>Εξ'αποστάσεως</th>
+            <th>Κατάσταση</th>
+            <th>Ημερομηνία και Ώρα</th>
+            <th>Διαχείρηση</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="applications,iter : ${listApplications}">
+            <td th:text="${iter.index + 1}">ID</td>
+            <td th:text="${applications.user.firstname} + ' ' + ${applications.user.lastname}">User Name</td>
+            <td th:text="${applications.program.name}">Program ID</td>
+            <td th:text="${applications.degreeScore}">Degree Score</td>
+            <td th:text="${applications.income}">Income</td>
+            <td th:text="${applications.city}">City</td>
+            <td th:text="${applications.remote ? 'Ναι' : 'Όχι' }">Remote</td>
+            <td th:text="${applications.accepted ? 'Εγκρίθηκε' : 'Απορρίφθηκε'}">Accepted</td>
+            <td th:text="${applications.applicationDateTime}"></td>
+            <td>
+                <a class="btn btn-danger btn-sm" th:href="@{/delete_application/{id}(id=${applications.id})}" onclick="return confirm('Are you sure you want to delete this application?');">Διαγραφή</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+ <div class="mt-4">
+            
+            <a th:href="@{/admin}" class="btn btn-primary">Επιστροφή στην Αρχική</a>
+        </div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

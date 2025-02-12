@@ -1,0 +1,44 @@
+package com.example.rules
+
+import com.example.Application
+import com.example.Program
+
+global Program program;
+
+rule "Accept application if criteria met considering remote option"
+when
+    $application : Application(
+        (program.getRemote() == true && 
+         remote == true && 
+         degreeScore >= program.getDegreeScore() && 
+         income >= program.getRequiredIncome()) ||
+        (program.getRemote() == true && 
+         remote == false && 
+         degreeScore >= program.getDegreeScore() && 
+         income >= program.getRequiredIncome() && 
+         city == program.getCity) ||
+        (program.getRemote() == false && 
+         remote == false && 
+         degreeScore >= program.getDegreeScore() && 
+         income >= program.getRequiredIncome() && 
+         city == program.getCity)
+    )
+then
+    $application.setAccepted(true);
+end
+
+rule "Reject application if criteria not met or remote mismatch or wrong city"
+when
+    $application : Application(
+        (program.getRemote() == true && 
+         remote == false && 
+         city != program.getCity) ||
+        (degreeScore < program.getDegreeScore() || 
+         income < program.getRequiredIncome()) ||
+        (program.getRemote() == false && 
+         (remote == true || 
+          city != program.getCity))
+    )
+then
+    $application.setAccepted(false);
+end

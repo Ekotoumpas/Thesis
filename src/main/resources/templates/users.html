@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>List Users</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+     	<link rel="stylesheet" type="text/css" href="/styles.css"/>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Μεταπτυχιακά προγράμματα</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/my_applications}">Οι αιτήσεις μου</a>
+                    </li>
+                     <li class="nav-item">
+                        <form th:action="@{/logout}" method="post" class="form-inline">
+                            <button type="submit" class="btn btn-link nav-link" style="cursor: pointer; text-decoration: none;">Έξοδος</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="text-center">
+            <!-- Welcome Message -->
+            <p>Καλώς ήρθατε, <b><span sec:authentication="principal.fullname"></span></b></p>
+
+           
+
+            <!-- Programs Selection Form -->
+            <h2>Επιλέξτε ένα Πρόγραμμα</h2>
+            
+            <form th:action="@{/apply_program}" method="get">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            
+                            <th>Όνομα Προγράμματος</th>
+                            <th>Περιγραφή Προγράμματος</th>
+                            <th>Επιλογή</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="program : ${listPrograms}">
+                            
+                            <td th:text="${program.name}"></td>
+                            <td th:text="${program.description}"></td>
+                            <td>
+                                <input type="radio" name="programId" th:value="${program.id}" required>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="submit" class="btn btn-primary mt-2">Αίτηση</button>
+            </form>
+        </div>
+    </div>
+    <script src="/webjars/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

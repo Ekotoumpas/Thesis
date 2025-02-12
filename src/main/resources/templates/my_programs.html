@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>HOME</title>	
+<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+ 	<link rel="stylesheet" type="text/css" href="/styles.css"/>
+
+</head>	
+<body>
+	  <h1>My Programs</h1>
+    
+    <div th:if="${userPrograms != null}">
+        <ul>
+            <li th:each="program : ${userPrograms}" th:text="${program.name}">Program Name</li>
+        </ul>
+    </div>
+    
+    <div th:if="${error != null}">
+        <p th:text="${error}"></p>
+    </div>
+    
+    <a href="/users">Back to Users List</a>
+</body>
+</html>

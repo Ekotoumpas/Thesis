@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Απόρριψη Αίτησης</title>    
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+     	<link rel="stylesheet" type="text/css" href="/styles.css"/>
+
+</head>    
+<body>
+    <div class="container text-center mt-5">
+        <div class="alert alert-danger" role="alert">
+            <h3>Απόρριψη Αίτησης</h3>
+            <p>Η αίτησή σας απορρίφθηκε επειδή δεν τηρούσε τα κριτήρια.</p>
+        </div>
+        <div class="mt-4">
+            
+            <a th:href="@{/my_applications}" class="btn btn-secondary">Συνέχεια</a>
+        </div>
+    </div>
+    <script src="/webjars/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
